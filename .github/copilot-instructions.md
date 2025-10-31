@@ -173,7 +173,7 @@ const buttonText = t('intro.start_button');
 - **Static assets**: `/public/` directory (sounds, images, question JSON)
 - **Icons**: Lucide React for UI icons, custom SVGs for game-specific graphics  
 - **Sounds**: MP3 files triggered via `useSound` hook with volume controls
-  - Currently not really in place, but already in place for future use
+  - Sound system hooks are prepared for future implementation
 
 When modifying existing code, always check for related hook dependencies and ensure proper error boundaries. Follow the established patterns rather than introducing new architectural approaches.
 
