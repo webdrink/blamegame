@@ -6,8 +6,6 @@ export * from './modules';
 export * from './phases';
 export * from './dispatcher';
 export * from './actions';
-export { default as GameHost } from './GameHost';
-export { default as FrameworkRouter } from './router/FrameworkRouter';
 
 // Player ID helper types
 export type PlayerId = string;
