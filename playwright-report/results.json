@@ -12,26 +12,26 @@
     "maxFailures": 0,
     "metadata": {
       "ci": {
-        "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-        "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-        "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+        "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+        "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+        "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
       },
       "gitCommit": {
-        "shortHash": "26b8ffb",
-        "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-        "subject": "Extract framework components into framework folder",
-        "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+        "shortHash": "0a13af5",
+        "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+        "subject": "Initial plan",
+        "body": "Initial plan\n",
         "author": {
           "name": "copilot-swe-agent[bot]",
           "email": "198982749+Copilot@users.noreply.github.com",
-          "time": 1763220111000
+          "time": 1763453868000
         },
         "committer": {
           "name": "copilot-swe-agent[bot]",
           "email": "198982749+Copilot@users.noreply.github.com",
-          "time": 1763220111000
+          "time": 1763453868000
         },
-        "branch": "copilot/extract-game-framework-folder"
+        "branch": "copilot/restore-blamegame-visual-appeal"
       }
     },
     "preserveOutput": "always",
@@ -65,26 +65,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "foundation-tests",
@@ -102,26 +102,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "classic-mode-flows",
@@ -139,26 +139,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "nameblame-mode-flows",
@@ -176,26 +176,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "component-tests",
@@ -213,26 +213,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "edge-cases",
@@ -250,26 +250,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "performance-tests",
@@ -287,26 +287,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "cross-browser-firefox",
@@ -324,26 +324,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "cross-browser-webkit",
@@ -361,26 +361,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "mobile-chrome",
@@ -398,26 +398,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "mobile-safari",
@@ -435,26 +435,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "accessibility-tests",
@@ -472,26 +472,26 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/webdrink/blamegame/commit/f3361d392cbad1f8221135068833ed60c3187a9b",
-            "commitHash": "f3361d392cbad1f8221135068833ed60c3187a9b",
-            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19391595430"
+            "commitHref": "https://github.com/webdrink/blamegame/commit/0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "commitHash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "buildHref": "https://github.com/webdrink/blamegame/actions/runs/19458978240"
           },
           "gitCommit": {
-            "shortHash": "26b8ffb",
-            "hash": "26b8ffbb23a773d9a386469bd64821676ba12d49",
-            "subject": "Extract framework components into framework folder",
-            "body": "Extract framework components into framework folder\n\n- Move core UI components to framework/ui/components/\n- Move framework screens to framework/ui/screens/\n- Create framework/index.ts with all exports\n- Update all imports throughout codebase\n- Remove empty components/core and components/framework directories\n- Add comprehensive framework README\n- Build passes successfully\n\nCo-authored-by: PatrickBziuk <71643449+PatrickBziuk@users.noreply.github.com>\n",
+            "shortHash": "0a13af5",
+            "hash": "0a13af52fa378e16d48b8a0b063d46a2fb64ba8d",
+            "subject": "Initial plan",
+            "body": "Initial plan\n",
             "author": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
             "committer": {
               "name": "copilot-swe-agent[bot]",
               "email": "198982749+Copilot@users.noreply.github.com",
-              "time": 1763220111000
+              "time": 1763453868000
             },
-            "branch": "copilot/extract-game-framework-folder"
+            "branch": "copilot/restore-blamegame-visual-appeal"
           }
         },
         "id": "fixes-tests",
@@ -524,8 +524,8 @@
     }
   ],
   "stats": {
-    "startTime": "2025-11-15T15:22:03.498Z",
-    "duration": 333.404,
+    "startTime": "2025-11-18T08:24:25.751Z",
+    "duration": 335.366,
     "expected": 0,
     "skipped": 0,
     "unexpected": 0,
