@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'apps/blamegame/**'
+      - 'games/blamegame/**'
       - 'packages/**'
       - '.github/workflows/deploy-blamegame.yml'
   workflow_dispatch:
@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: blamegame-dist
-          path: apps/blamegame/dist/
+          path: games/blamegame/dist/
           retention-days: 30
 
       - name: ✅ Build Complete

@@ -34,7 +34,7 @@ The central hub for discovering and launching League of Fun games. Maintains pla
 
 ```
 .
-├── apps/
+├── games/
 │   ├── blamegame/          # BlameGame application
 │   ├── hookhunt/           # HookHunt application  
 │   └── game-picker/        # Central hub

@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'apps/game-picker/**'
+      - 'games/game-picker/**'
       - 'packages/**'
       - '.github/workflows/deploy-game-picker.yml'
   workflow_dispatch:
@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: game-picker-dist
-          path: apps/game-picker/dist/
+          path: games/game-picker/dist/
           retention-days: 30
 
       - name: ✅ Build Complete

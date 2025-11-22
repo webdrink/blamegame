@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'apps/hookhunt/**'
+      - 'games/hookhunt/**'
       - 'packages/**'
       - '.github/workflows/deploy-hookhunt.yml'
   workflow_dispatch:
@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: hookhunt-dist
-          path: apps/hookhunt/dist/
+          path: games/hookhunt/dist/
           retention-days: 30
 
       - name: ✅ Build Complete

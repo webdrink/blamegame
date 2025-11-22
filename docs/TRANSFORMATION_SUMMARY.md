@@ -6,8 +6,8 @@ Successfully transformed the BlameGame repository into a multi-game monorepo cal
 ## Completed Work
 
 ### 1. Monorepo Structure ✅
-- Created `apps/` and `packages/` directory structure
-- Moved BlameGame to `apps/blamegame` 
+- Created `games/` and `packages/` directory structure
+- Moved BlameGame to `games/blamegame` 
 - Set up npm workspaces in root `package.json`
 - Configured TypeScript path aliases across all apps
 
@@ -33,7 +33,7 @@ Created three shared packages:
 - PostCSS configuration
 
 ### 3. Game Picker Hub ✅
-Created `apps/game-picker` with:
+Created `games/game-picker` with:
 - Player ID generation and management
 - Game registry configuration
 - Beautiful gradient UI with game cards
@@ -42,7 +42,7 @@ Created `apps/game-picker` with:
 - Successfully builds (369 KB)
 
 ### 4. HookHunt Skeleton ✅
-Created `apps/hookhunt` with:
+Created `games/hookhunt` with:
 - "Coming soon" placeholder UI
 - Music-inspired blue/purple theme
 - Player ID URL parameter handling
@@ -50,7 +50,7 @@ Created `apps/hookhunt` with:
 - Successfully builds (310 KB)
 
 ### 5. BlameGame Integration ✅
-- Maintained in `apps/blamegame`
+- Maintained in `games/blamegame`
 - Added `usePlayerId` hook for cross-domain flow
 - Added `returnToHub` function
 - All existing functionality preserved
@@ -61,17 +61,17 @@ Created `apps/hookhunt` with:
 Created three independent GitHub Actions workflows:
 
 **.github/workflows/deploy-blamegame.yml**
-- Triggers on `apps/blamegame/**` or `packages/**` changes
+- Triggers on `games/blamegame/**` or `packages/**` changes
 - Builds and uploads BlameGame artifacts
 - Independent from other apps
 
 **.github/workflows/deploy-hookhunt.yml**
-- Triggers on `apps/hookhunt/**` or `packages/**` changes
+- Triggers on `games/hookhunt/**` or `packages/**` changes
 - Builds and uploads HookHunt artifacts
 - Independent from other apps
 
 **.github/workflows/deploy-game-picker.yml**
-- Triggers on `apps/game-picker/**` or `packages/**` changes
+- Triggers on `games/game-picker/**` or `packages/**` changes
 - Builds and uploads Game Picker artifacts
 - Independent from other apps
 

@@ -12,19 +12,19 @@ The BlameGame repository has been successfully transformed into the **League of 
 
 ### 🎮 Applications (3)
 
-#### 1. Game Picker Hub (`apps/game-picker`)
+#### 1. Game Picker Hub (`games/game-picker`)
 - Central game discovery hub
 - Player ID management system
 - Beautiful gradient UI
 - **Build:** 420 KB, 3 files
 
-#### 2. BlameGame (`apps/blamegame`)
+#### 2. BlameGame (`games/blamegame`)
 - Existing game fully preserved
 - Player ID integration added
 - Theme system created
 - **Build:** 1.8 MB, 150 files (includes PWA)
 
-#### 3. HookHunt (`apps/hookhunt`)
+#### 3. HookHunt (`games/hookhunt`)
 - New skeleton app
 - "Coming soon" UI
 - Player ID integration
@@ -107,7 +107,7 @@ npm run build:game-picker
 
 ```
 .
-├── apps/
+├── games/
 │   ├── blamegame/          # Existing game
 │   ├── hookhunt/           # New skeleton
 │   └── game-picker/        # Central hub

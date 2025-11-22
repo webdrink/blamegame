@@ -6,7 +6,7 @@ This repository is a monorepo containing multiple game applications and shared p
 
 ```
 .
-├── apps/                     # Game applications
+├── games/                     # Game applications
 │   ├── blamegame/           # BlameGame - "Who would most likely...?"
 │   ├── hookhunt/            # HookHunt - Music guessing game
 │   └── game-picker/         # League of Fun hub (leagueoffun.de)
@@ -25,7 +25,7 @@ This repository is a monorepo containing multiple game applications and shared p
 ## 🎮 Applications
 
 ### Game Picker (Hub)
-- **Path**: `apps/game-picker`
+- **Path**: `games/game-picker`
 - **URL**: `leagueoffun.de`
 - **Purpose**: Central hub for discovering and launching games
 - **Features**:
@@ -35,7 +35,7 @@ This repository is a monorepo containing multiple game applications and shared p
   - Return flow handling with stats collection
 
 ### BlameGame
-- **Path**: `apps/blamegame`
+- **Path**: `games/blamegame`
 - **URL**: `blamegame.leagueoffun.de`
 - **Purpose**: Party game for friends - "Who would most likely...?"
 - **Features**:
@@ -45,7 +45,7 @@ This repository is a monorepo containing multiple game applications and shared p
   - Player ID integration
 
 ### HookHunt
-- **Path**: `apps/hookhunt`
+- **Path**: `games/hookhunt`
 - **URL**: `hookhunt.leagueoffun.de`
 - **Purpose**: Music guessing game (coming soon)
 - **Features**:
@@ -157,9 +157,9 @@ if (returnUrl) {
 
 Each app has an independent build and deployment pipeline to ensure failure isolation:
 
-- **deploy-blamegame.yml**: Triggers on changes to `apps/blamegame/**` or `packages/**`
-- **deploy-hookhunt.yml**: Triggers on changes to `apps/hookhunt/**` or `packages/**`
-- **deploy-game-picker.yml**: Triggers on changes to `apps/game-picker/**` or `packages/**`
+- **deploy-blamegame.yml**: Triggers on changes to `games/blamegame/**` or `packages/**`
+- **deploy-hookhunt.yml**: Triggers on changes to `games/hookhunt/**` or `packages/**`
+- **deploy-game-picker.yml**: Triggers on changes to `games/game-picker/**` or `packages/**`
 
 Benefits:
 - A failing build in one game doesn't block others
@@ -191,22 +191,22 @@ const hookhuntTheme = {
 
 1. **Create app directory**:
    ```bash
-   mkdir -p apps/newgame/src
+   mkdir -p games/newgame/src
    ```
 
 2. **Copy configuration** from an existing game:
    ```bash
-   cp apps/hookhunt/package.json apps/newgame/
-   cp apps/hookhunt/tsconfig.json apps/newgame/
-   cp apps/hookhunt/vite.config.ts apps/newgame/
+   cp games/hookhunt/package.json games/newgame/
+   cp games/hookhunt/tsconfig.json games/newgame/
+   cp games/hookhunt/vite.config.ts games/newgame/
    ```
 
 3. **Update package.json** with new game name
 
 4. **Add build scripts** to root `package.json`:
    ```json
-   "dev:newgame": "cd apps/newgame && npm run dev",
-   "build:newgame": "cd apps/newgame && npm run build"
+   "dev:newgame": "cd games/newgame && npm run dev",
+   "build:newgame": "cd games/newgame && npm run build"
    ```
 
 5. **Create GitHub workflow**:
@@ -215,13 +215,13 @@ const hookhuntTheme = {
    on:
      push:
        paths:
-         - 'apps/newgame/**'
+         - 'games/newgame/**'
          - 'packages/**'
    ```
 
 6. **Register in game-picker**:
    ```typescript
-   // apps/game-picker/src/games.config.ts
+   // games/game-picker/src/games.config.ts
    export const games = [
      // ...existing games
      {
