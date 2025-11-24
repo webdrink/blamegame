@@ -1,8 +1,10 @@
 /**
- * Animation Context for HookHunt
+ * Animation Context
  * 
  * Provides a global toggle for animations across the application.
  * This supports accessibility preferences and user choice to disable animations.
+ * 
+ * Shared across all League of Fun applications.
  */
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
@@ -20,12 +22,12 @@ const ANIMATION_PREF_KEY = 'leagueoffun.animationsEnabled';
 export function AnimationProvider({ children }: { children: ReactNode }) {
   const [animationsEnabled, setAnimationsEnabled] = useState<boolean>(() => {
     // Check stored preference first
-    const stored = localStorage.getItem(ANIMATION_PREF_KEY);
-    if (stored !== null) {
-      return stored === 'true';
-    }
-    // Respect prefers-reduced-motion by default
     if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem(ANIMATION_PREF_KEY);
+      if (stored !== null) {
+        return stored === 'true';
+      }
+      // Respect prefers-reduced-motion by default
       return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }
     return true;
@@ -70,7 +72,10 @@ export function useAnimations(): AnimationContextValue {
   return context;
 }
 
-// Helper hook to get animation variants based on animation state
+/**
+ * Helper hook to get animation variants based on animation state.
+ * Use this to create conditional animations that respect user preferences.
+ */
 export function useAnimationVariants() {
   const { animationsEnabled } = useAnimations();
   

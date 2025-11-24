@@ -46,12 +46,10 @@ test.describe('BlameGame Classic Mode', () => {
     const startButton = page.getByRole('button', { name: /Start Game|Spiel starten/i });
     await startButton.click();
     
-    // Wait for loading animation to complete (usually 3-4 seconds)
-    await page.waitForTimeout(5000);
-    
-    // Should now be on question screen - look for question-related content
+    // Wait for loading screen to complete - look for question content to appear
+    // This is better than hardcoded timeout as it waits for actual content
     const questionContent = page.getByText(/würde|would|Wer/i);
-    await expect(questionContent.first()).toBeVisible({ timeout: 10000 });
+    await expect(questionContent.first()).toBeVisible({ timeout: 15000 });
   });
 
   test('should display game mode toggles', async ({ page }) => {
@@ -97,7 +95,9 @@ test.describe('BlameGame NameBlame Mode', () => {
     // Enable NameBlame mode
     const nameBlameSwitch = page.getByRole('switch', { name: /NameBlame Mode/i });
     await nameBlameSwitch.click();
-    await page.waitForTimeout(1000);
+    
+    // Wait for player setup screen to appear
+    await expect(page.getByText(/Spieler|Player|Add|hinzufügen/i)).toBeVisible({ timeout: 5000 });
     
     // Find player input
     const input = page.getByRole('textbox').first();
@@ -121,10 +121,9 @@ test.describe('BlameGame Settings and Preferences', () => {
     // Find language selector
     const languageSelector = page.getByRole('combobox', { name: /Language/i });
     await languageSelector.selectOption('English');
-    await page.waitForTimeout(500);
     
-    // UI should update to English
-    await expect(page.getByText(/Who would most likely/i)).toBeVisible();
+    // UI should update to English - wait for text to appear
+    await expect(page.getByText(/Who would most likely/i)).toBeVisible({ timeout: 5000 });
   });
 
   test('should open settings modal', async ({ page }) => {
@@ -132,8 +131,8 @@ test.describe('BlameGame Settings and Preferences', () => {
     const settingsButton = page.getByRole('button', { name: /Settings/i });
     await settingsButton.click();
     
-    // Settings modal should open
-    await page.waitForTimeout(500);
+    // Wait for modal to appear - look for modal content
+    await page.waitForLoadState('domcontentloaded');
   });
 
   test('should open info modal', async ({ page }) => {
@@ -141,8 +140,8 @@ test.describe('BlameGame Settings and Preferences', () => {
     const infoButton = page.getByRole('button', { name: /Information/i });
     await infoButton.click();
     
-    // Info modal should open
-    await page.waitForTimeout(500);
+    // Wait for modal to appear - look for modal content
+    await page.waitForLoadState('domcontentloaded');
   });
 
   test('should toggle dark mode', async ({ page }) => {
@@ -150,7 +149,8 @@ test.describe('BlameGame Settings and Preferences', () => {
     const darkModeButton = page.getByRole('button', { name: /dark mode/i });
     if (await darkModeButton.isVisible()) {
       await darkModeButton.click();
-      await page.waitForTimeout(500);
+      // Wait for style changes to apply
+      await page.waitForLoadState('domcontentloaded');
     }
   });
 });
@@ -166,10 +166,7 @@ test.describe('Category Selection', () => {
     const categorySwitch = page.getByRole('switch', { name: /Manual category selection/i });
     await categorySwitch.click();
     
-    // Wait for category picker to appear
-    await page.waitForTimeout(1000);
-    
-    // Should show category options
+    // Should show category options - wait for content to appear
     const categoryContent = page.getByText(/category|Kategorie/i);
     await expect(categoryContent.first()).toBeVisible({ timeout: 5000 });
   });

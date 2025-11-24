@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Music, ArrowLeft, Zap, Play, Headphones, Users, Trophy, Star, Sparkles } from 'lucide-react';
-import { useAnimations } from './context/AnimationContext';
+import { useAnimations } from '@game-core';
 
 // Animation toggle component
 function AnimationToggle() {

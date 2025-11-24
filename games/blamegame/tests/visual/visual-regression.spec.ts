@@ -81,8 +81,8 @@ test.describe('Accessibility Tests', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     
-    // Should trigger some action
-    await page.waitForTimeout(500);
+    // Wait for any navigation or action to complete
+    await page.waitForLoadState('domcontentloaded');
   });
 });
 

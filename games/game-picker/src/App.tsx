@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Gamepad2, User, Sparkles, Music, Target, Trophy, Users, Zap } from 'lucide-react';
 import { usePlayer } from './PlayerContext';
-import { useAnimations } from './context/AnimationContext';
+import { useAnimations } from '@game-core';
 import { games, GameInfo } from './games.config';
 
 // Animation toggle component
