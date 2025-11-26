@@ -8,3 +8,6 @@ packages:
   - hooks
   - store
   - utils
+
+onlyBuiltDependencies:
+  - esbuild
