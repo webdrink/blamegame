@@ -1,28 +1,72 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Music, ArrowLeft, Zap, Play, Headphones, Users, Trophy, Star, Sparkles } from 'lucide-react';
+import { Music, ArrowLeft, Zap, Play, Headphones, Users, Trophy, Star, Sparkles, Settings, Info, Moon, Sun } from 'lucide-react';
 import { useAnimations } from '@game-core';
 
-// Animation toggle component
-function AnimationToggle() {
-  const { animationsEnabled, toggleAnimations } = useAnimations();
-  
-  return (
-    <button
-      onClick={toggleAnimations}
-      className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-white/80 hover:text-white text-sm"
-      aria-label={animationsEnabled ? 'Disable animations' : 'Enable animations'}
-    >
-      {animationsEnabled ? <Zap size={16} /> : <Zap size={16} className="opacity-50" />}
-      <span className="hidden sm:inline">{animationsEnabled ? 'Animations On' : 'Animations Off'}</span>
-    </button>
-  );
+// Seasonal theme hook (matches BlameGame)
+type Season = 'fall' | 'winter' | 'spring' | 'summer';
+
+const getCurrentSeason = (): Season => {
+  const month = new Date().getMonth();
+  if (month >= 2 && month <= 4) return 'spring';
+  if (month >= 5 && month <= 7) return 'summer';
+  if (month >= 8 && month <= 10) return 'fall';
+  return 'winter';
+};
+
+const getSeasonalGradient = (season: Season, isDark: boolean): string => {
+  switch (season) {
+    case 'fall':
+      return isDark 
+        ? 'bg-gradient-to-br from-amber-900 via-orange-900 to-red-900'
+        : 'bg-gradient-to-br from-amber-400 via-orange-500 to-red-500';
+    case 'winter':
+      return isDark
+        ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900'
+        : 'bg-gradient-to-br from-slate-300 via-blue-400 to-indigo-500';
+    case 'spring':
+      return isDark
+        ? 'bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900'
+        : 'bg-gradient-to-br from-green-400 via-emerald-500 to-teal-500';
+    case 'summer':
+      return isDark
+        ? 'bg-gradient-to-br from-yellow-900 via-orange-900 to-pink-900'
+        : 'bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500';
+  }
+};
+
+// Dark mode hook
+function useDarkMode() {
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('lof.v1.darkMode');
+      if (stored !== null) return stored === 'true';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('lof.v1.darkMode', String(isDark));
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDark]);
+
+  return { isDark, toggle: () => setIsDark(prev => !prev) };
 }
 
 function App() {
   const [playerId, setPlayerId] = useState<string>('');
   const [returnUrl, setReturnUrl] = useState<string>('');
-  const { animationsEnabled } = useAnimations();
+  const { animationsEnabled, toggleAnimations } = useAnimations();
+  const { isDark, toggle: toggleDarkMode } = useDarkMode();
+  const [season] = useState<Season>(() => {
+    const saved = localStorage.getItem('lof.v1.theme.season') as Season | null;
+    return saved || getCurrentSeason();
+  });
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -50,31 +94,6 @@ function App() {
     }
   };
 
-  const floatingAnimation = animationsEnabled
-    ? {
-        y: [0, -10, 0],
-        transition: {
-          duration: 3,
-          repeat: Infinity,
-          ease: 'easeInOut'
-        }
-      }
-    : {};
-
-  const containerVariants = animationsEnabled
-    ? {
-        initial: { opacity: 0, scale: 0.95 },
-        animate: { 
-          opacity: 1, 
-          scale: 1,
-          transition: { duration: 0.5, type: 'spring', stiffness: 100 }
-        }
-      }
-    : {
-        initial: { opacity: 1, scale: 1 },
-        animate: { opacity: 1, scale: 1 }
-      };
-
   const itemVariants = animationsEnabled
     ? {
         initial: { opacity: 0, y: 20 },
@@ -86,74 +105,85 @@ function App() {
       };
 
   const features = [
-    { icon: <Headphones size={20} />, text: 'Listen to 7-12 second hooks' },
-    { icon: <Users size={20} />, text: 'Play with friends' },
-    { icon: <Trophy size={20} />, text: 'Compete for high scores' },
-    { icon: <Star size={20} />, text: 'Connect your Spotify' },
+    { icon: <Headphones size={18} />, text: 'Listen to 7-12 second hooks' },
+    { icon: <Users size={18} />, text: 'Play with friends' },
+    { icon: <Trophy size={18} />, text: 'Compete for high scores' },
+    { icon: <Star size={18} />, text: 'Connect your Spotify' },
   ];
 
+  const backgroundGradient = getSeasonalGradient(season, isDark);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {animationsEnabled && (
-          <>
-            <motion.div
-              className="absolute top-20 left-10 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl"
-              animate={floatingAnimation}
-            />
-            <motion.div
-              className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl"
-              animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 1 } }}
-            />
-            <motion.div
-              className="absolute top-1/2 left-1/3 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl"
-              animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 0.5 } }}
-            />
-          </>
-        )}
-        
-        {!animationsEnabled && (
-          <>
-            <div className="absolute top-20 left-10 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl" />
-          </>
-        )}
-      </div>
+    <div className={`min-h-screen ${backgroundGradient} animate-gentle-shift bg-[length:400%_400%] overflow-hidden`}>
+      {/* Fixed Layout Container matching BlameGame structure */}
+      <div className="h-screen flex flex-col bg-transparent overflow-hidden">
+        {/* Main Viewport-Responsive Container */}
+        <div className="flex flex-col h-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mx-auto w-full px-3 sm:px-4 lg:px-6 bg-transparent">
+          
+          {/* Top Padding */}
+          <div className="h-4 sm:h-6 flex-shrink-0"></div>
+          
+          {/* Header Card - Matching BlameGame style */}
+          <header className="py-3 sm:py-4 flex-shrink-0 flex justify-center items-center">
+            <div className="bg-white/90 dark:bg-gray-800/90 rounded-3xl shadow-2xl px-4 sm:px-5 md:px-6 py-3 sm:py-4 w-full backdrop-blur-sm flex items-center justify-center min-h-[64px]">
+              <div className="text-center w-full max-w-full">
+                <motion.h1
+                  initial={animationsEnabled ? { opacity: 0, y: -10 } : {}}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 dark:from-orange-400 dark:via-orange-500 dark:to-red-500 drop-shadow-sm leading-tight text-center w-full text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+                >
+                  HookHunt
+                </motion.h1>
+                <motion.p
+                  initial={animationsEnabled ? { opacity: 0, y: 10 } : {}}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="text-orange-600 dark:text-orange-400 font-medium text-sm sm:text-base md:text-lg"
+                >
+                  Guess the hit from the hook! 🎵
+                </motion.p>
+              </div>
+            </div>
+          </header>
 
-      {/* Settings bar */}
-      <div className="absolute top-4 right-4 z-20">
-        <AnimationToggle />
-      </div>
+          {/* Padding after header */}
+          <div className="h-3 sm:h-4 flex-shrink-0"></div>
 
-      <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
-        <motion.div
-          variants={containerVariants}
-          initial="initial"
-          animate="animate"
-          className="max-w-2xl w-full"
-        >
-          {/* Main card */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20">
-            {/* Decorative header */}
-            <div className="h-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400" />
-            
-            <div className="p-8 md:p-12 text-center">
-              {/* Icon */}
+          {/* Main Content Area */}
+          <main className="flex-1 flex flex-col bg-transparent min-h-0 overflow-auto">
+            <div className="flex-1 flex items-center justify-center bg-transparent py-2 sm:py-4 px-0 min-h-0">
               <motion.div
-                variants={itemVariants}
-                initial="initial"
-                animate="animate"
-                transition={{ delay: 0.1 }}
-                className="mb-8"
+                initial={animationsEnabled ? { opacity: 0, y: 20, scale: 0.95 } : {}}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="bg-white/95 dark:bg-gray-800/95 rounded-3xl shadow-2xl p-6 md:p-8 w-full backdrop-blur-sm"
               >
+                {/* Coming Soon Badge - Preserved from original design */}
                 <motion.div
-                  animate={animationsEnabled ? floatingAnimation : {}}
-                  className="inline-block"
+                  variants={itemVariants}
+                  initial="initial"
+                  animate="animate"
+                  transition={{ delay: 0.2 }}
+                  className="text-center mb-6"
+                >
+                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 dark:from-yellow-500/30 dark:to-orange-500/30 rounded-full border border-yellow-400/50 dark:border-yellow-500/50">
+                    <Sparkles size={20} className="text-yellow-500 dark:text-yellow-400" />
+                    <span className="text-yellow-600 dark:text-yellow-400 font-semibold text-lg">Coming Soon!</span>
+                  </div>
+                </motion.div>
+
+                {/* Game Icon */}
+                <motion.div
+                  variants={itemVariants}
+                  initial="initial"
+                  animate="animate"
+                  transition={{ delay: 0.3 }}
+                  className="flex justify-center mb-6"
                 >
                   <div className="relative">
-                    <div className="w-24 h-24 mx-auto bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 rounded-full flex items-center justify-center shadow-2xl">
-                      <Music size={48} className="text-white" />
+                    <div className="w-20 h-20 bg-gradient-to-br from-orange-400 via-orange-500 to-red-500 rounded-full flex items-center justify-center shadow-xl">
+                      <Music size={40} className="text-white" />
                     </div>
                     {animationsEnabled && (
                       <motion.div
@@ -161,142 +191,146 @@ function App() {
                         animate={{ rotate: [0, 15, 0, -15, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
                       >
-                        <Sparkles size={24} className="text-yellow-400" />
+                        <Sparkles size={20} className="text-yellow-500" />
                       </motion.div>
                     )}
                   </div>
                 </motion.div>
-              </motion.div>
-              
-              {/* Title */}
-              <motion.h1
-                variants={itemVariants}
-                initial="initial"
-                animate="animate"
-                transition={{ delay: 0.2 }}
-                className="text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight"
-              >
-                Hook<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-pink-300">Hunt</span>
-              </motion.h1>
-              
-              <motion.p
-                variants={itemVariants}
-                initial="initial"
-                animate="animate"
-                transition={{ delay: 0.3 }}
-                className="text-xl text-white/90 mb-8"
-              >
-                Guess the hit from the hook! 🎵
-              </motion.p>
-              
-              {/* Coming Soon Badge */}
-              <motion.div
-                variants={itemVariants}
-                initial="initial"
-                animate="animate"
-                transition={{ delay: 0.4 }}
-                className="mb-8"
-              >
-                <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-full border border-yellow-400/30">
-                  <Sparkles size={20} className="text-yellow-400" />
-                  <span className="text-yellow-300 font-semibold text-lg">Coming Soon!</span>
-                </div>
-              </motion.div>
-              
-              {/* Description */}
-              <motion.div
-                variants={itemVariants}
-                initial="initial"
-                animate="animate"
-                transition={{ delay: 0.5 }}
-                className="bg-white/5 rounded-2xl p-6 mb-8 border border-white/10"
-              >
-                <p className="text-white/80 leading-relaxed text-lg">
-                  HookHunt is under development! Get ready to test your music knowledge
-                  by identifying songs from their iconic hooks. Connect your Spotify playlist
-                  and challenge friends to see who knows their tunes best!
-                </p>
-              </motion.div>
 
-              {/* Features grid */}
-              <motion.div
-                variants={itemVariants}
-                initial="initial"
-                animate="animate"
-                transition={{ delay: 0.6 }}
-                className="grid grid-cols-2 gap-4 mb-8"
-              >
-                {features.map((feature, index) => (
-                  <motion.div
-                    key={feature.text}
-                    className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/10"
-                    whileHover={animationsEnabled ? { scale: 1.02, backgroundColor: 'rgba(255,255,255,0.1)' } : {}}
-                    initial={animationsEnabled ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.7 + index * 0.1 }}
-                  >
-                    <div className="text-purple-300">{feature.icon}</div>
-                    <span className="text-white/80 text-sm">{feature.text}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
+                {/* Description */}
+                <motion.div
+                  variants={itemVariants}
+                  initial="initial"
+                  animate="animate"
+                  transition={{ delay: 0.4 }}
+                  className="bg-gray-50 dark:bg-gray-700/50 rounded-2xl p-4 mb-6 border border-gray-200 dark:border-gray-600"
+                >
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-center">
+                    HookHunt is under development! Get ready to test your music knowledge
+                    by identifying songs from their iconic hooks. Connect your Spotify playlist
+                    and challenge friends to see who knows their tunes best!
+                  </p>
+                </motion.div>
 
-              {/* Player ID */}
-              {playerId && (
+                {/* Features grid */}
+                <motion.div
+                  variants={itemVariants}
+                  initial="initial"
+                  animate="animate"
+                  transition={{ delay: 0.5 }}
+                  className="grid grid-cols-2 gap-3 mb-6"
+                >
+                  {features.map((feature, index) => (
+                    <motion.div
+                      key={feature.text}
+                      className="flex items-center gap-2 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-xl border border-gray-200 dark:border-gray-600"
+                      whileHover={animationsEnabled ? { scale: 1.02 } : {}}
+                      initial={animationsEnabled ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.6 + index * 0.1 }}
+                    >
+                      <div className="text-orange-500 dark:text-orange-400">{feature.icon}</div>
+                      <span className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">{feature.text}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                {/* Action buttons */}
                 <motion.div
                   variants={itemVariants}
                   initial="initial"
                   animate="animate"
                   transition={{ delay: 0.7 }}
-                  className="text-sm text-white/50 mb-6 font-mono"
+                  className="space-y-3"
                 >
-                  Player ID: {playerId.slice(0, 8)}...
-                </motion.div>
-              )}
-              
-              {/* Action buttons */}
-              <motion.div
-                variants={itemVariants}
-                initial="initial"
-                animate="animate"
-                transition={{ delay: 0.8 }}
-                className="space-y-4"
-              >
-                {/* Disabled play button */}
-                <button
-                  disabled
-                  className="w-full flex items-center justify-center gap-3 bg-white/20 text-white/50 font-bold py-4 px-8 rounded-2xl cursor-not-allowed"
-                >
-                  <Play size={20} />
-                  Game Coming Soon
-                </button>
-                
-                {/* Return to hub */}
-                {returnUrl && (
-                  <motion.button
-                    onClick={handleReturnToHub}
-                    className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 px-8 rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
-                    whileHover={animationsEnabled ? { scale: 1.02 } : {}}
-                    whileTap={animationsEnabled ? { scale: 0.98 } : {}}
+                  {/* Disabled play button - matches BlameGame button style */}
+                  <button
+                    disabled
+                    className="w-full bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-700 text-gray-500 dark:text-gray-400 font-bold py-4 px-6 rounded-xl cursor-not-allowed transition-all duration-200"
                   >
-                    <ArrowLeft size={20} />
-                    Back to League of Fun
-                  </motion.button>
-                )}
+                    <span className="flex items-center justify-center gap-2">
+                      <Play size={20} />
+                      Game Coming Soon
+                    </span>
+                  </button>
+                  
+                  {/* Return to hub */}
+                  {returnUrl && (
+                    <motion.button
+                      onClick={handleReturnToHub}
+                      className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
+                      whileHover={animationsEnabled ? { scale: 1.02 } : {}}
+                      whileTap={animationsEnabled ? { scale: 0.98 } : {}}
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <ArrowLeft size={20} />
+                        Back to League of Fun
+                      </span>
+                    </motion.button>
+                  )}
+                </motion.div>
               </motion.div>
             </div>
-          </div>
-          
-          {/* Footer */}
-          <motion.footer
-            initial={animationsEnabled ? { opacity: 0 } : { opacity: 1 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="text-center py-8 text-white/50 text-sm"
-          >
-            <p>Part of League of Fun 🎮</p>
-          </motion.footer>
-        </motion.div>
+          </main>
+
+          {/* Padding before footer */}
+          <div className="h-3 sm:h-4 flex-shrink-0"></div>
+
+          {/* Footer - Matching BlameGame style */}
+          <footer className="flex-shrink-0 flex flex-col items-center justify-center pb-3 sm:pb-4">
+            <div className="bg-black/60 backdrop-blur-xl rounded-2xl p-4 mx-auto w-full max-w-2xl border border-white/20 shadow-2xl">
+              {/* Top Row: Main Controls */}
+              <div className="flex justify-center items-center gap-3 text-white dark:text-gray-200 mb-3">
+                {/* Animation toggle */}
+                <button
+                  onClick={toggleAnimations}
+                  className="flex items-center justify-center w-11 h-11 bg-orange-600/60 rounded-xl backdrop-blur-md border-2 border-orange-500/80 shadow-xl hover:bg-orange-500/70 hover:border-orange-400 transition-all duration-200 transform hover:scale-105"
+                  title={animationsEnabled ? 'Disable animations' : 'Enable animations'}
+                >
+                  <Zap size={18} className={animationsEnabled ? '' : 'opacity-50'} />
+                </button>
+                
+                {/* Settings button placeholder */}
+                <button
+                  className="flex items-center justify-center w-11 h-11 bg-orange-600/60 rounded-xl backdrop-blur-md border-2 border-orange-500/80 shadow-xl hover:bg-orange-500/70 hover:border-orange-400 transition-all duration-200 transform hover:scale-105"
+                  title="Settings"
+                >
+                  <Settings size={18} />
+                </button>
+                
+                {/* Info button placeholder */}
+                <button
+                  className="flex items-center justify-center w-11 h-11 bg-orange-600/60 rounded-xl backdrop-blur-md border-2 border-orange-500/80 shadow-xl hover:bg-orange-500/70 hover:border-orange-400 transition-all duration-200 transform hover:scale-105"
+                  title="Information"
+                >
+                  <Info size={18} />
+                </button>
+                
+                {/* Dark Mode Toggle */}
+                <button
+                  onClick={toggleDarkMode}
+                  className="flex items-center justify-center w-11 h-11 bg-orange-600/60 rounded-xl backdrop-blur-md border-2 border-orange-500/80 shadow-xl hover:bg-orange-500/70 hover:border-orange-400 transition-all duration-200 transform hover:scale-105"
+                  title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                >
+                  {isDark ? <Sun size={18} /> : <Moon size={18} />}
+                </button>
+              </div>
+              
+              {/* Bottom Row: Support message */}
+              <div className="border-t border-white/30 pt-3">
+                <p className="text-sm text-center text-white font-medium">
+                  🍂 Support us to unlock more games! 
+                  <span className="block text-white/90 text-xs mt-1">
+                    Your donation helps us create better games.
+                  </span>
+                </p>
+              </div>
+            </div>
+          </footer>
+
+          {/* Bottom Padding */}
+          <div className="h-4 sm:h-6 flex-shrink-0"></div>
+        </div>
       </div>
     </div>
   );
