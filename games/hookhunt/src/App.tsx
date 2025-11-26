@@ -1,7 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { Music, ArrowLeft, Zap, Play, Headphones, Users, Trophy, Star, Sparkles, Settings, Info, Moon, Sun } from 'lucide-react';
 import { useAnimations } from '@game-core';
+
+// Reusable FooterButton component matching BlameGame style
+interface FooterButtonProps {
+  onClick?: () => void;
+  title: string;
+  children: ReactNode;
+}
+
+const FooterButton: React.FC<FooterButtonProps> = ({ onClick, title, children }) => (
+  <button
+    onClick={onClick}
+    className="flex items-center justify-center w-11 h-11 bg-orange-600/60 rounded-xl backdrop-blur-md border-2 border-orange-500/80 shadow-xl hover:bg-orange-500/70 hover:border-orange-400 transition-all duration-200 transform hover:scale-105"
+    title={title}
+  >
+    {children}
+  </button>
+);
 
 // Seasonal theme hook (matches BlameGame)
 type Season = 'fall' | 'winter' | 'spring' | 'summer';
@@ -63,10 +80,12 @@ function App() {
   const [returnUrl, setReturnUrl] = useState<string>('');
   const { animationsEnabled, toggleAnimations } = useAnimations();
   const { isDark, toggle: toggleDarkMode } = useDarkMode();
-  const [season] = useState<Season>(() => {
+  
+  // Get season from localStorage or auto-detect (doesn't need to be stateful as it rarely changes)
+  const season: Season = (() => {
     const saved = localStorage.getItem('lof.v1.theme.season') as Season | null;
     return saved || getCurrentSeason();
-  });
+  })();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -114,7 +133,7 @@ function App() {
   const backgroundGradient = getSeasonalGradient(season, isDark);
 
   return (
-    <div className={`min-h-screen ${backgroundGradient} animate-gentle-shift bg-[length:400%_400%] overflow-hidden`}>
+    <div className={`min-h-screen ${backgroundGradient} animate-gentle-shift overflow-hidden`}>
       {/* Fixed Layout Container matching BlameGame structure */}
       <div className="h-screen flex flex-col bg-transparent overflow-hidden">
         {/* Main Viewport-Responsive Container */}
@@ -282,38 +301,36 @@ function App() {
               {/* Top Row: Main Controls */}
               <div className="flex justify-center items-center gap-3 text-white dark:text-gray-200 mb-3">
                 {/* Animation toggle */}
-                <button
+                <FooterButton
                   onClick={toggleAnimations}
-                  className="flex items-center justify-center w-11 h-11 bg-orange-600/60 rounded-xl backdrop-blur-md border-2 border-orange-500/80 shadow-xl hover:bg-orange-500/70 hover:border-orange-400 transition-all duration-200 transform hover:scale-105"
                   title={animationsEnabled ? 'Disable animations' : 'Enable animations'}
                 >
                   <Zap size={18} className={animationsEnabled ? '' : 'opacity-50'} />
-                </button>
+                </FooterButton>
                 
-                {/* Settings button placeholder */}
-                <button
-                  className="flex items-center justify-center w-11 h-11 bg-orange-600/60 rounded-xl backdrop-blur-md border-2 border-orange-500/80 shadow-xl hover:bg-orange-500/70 hover:border-orange-400 transition-all duration-200 transform hover:scale-105"
+                {/* Settings button - Coming soon alert */}
+                <FooterButton
+                  onClick={() => alert('Settings coming soon!')}
                   title="Settings"
                 >
                   <Settings size={18} />
-                </button>
+                </FooterButton>
                 
-                {/* Info button placeholder */}
-                <button
-                  className="flex items-center justify-center w-11 h-11 bg-orange-600/60 rounded-xl backdrop-blur-md border-2 border-orange-500/80 shadow-xl hover:bg-orange-500/70 hover:border-orange-400 transition-all duration-200 transform hover:scale-105"
+                {/* Info button - Coming soon alert */}
+                <FooterButton
+                  onClick={() => alert('HookHunt is under development. Stay tuned!')}
                   title="Information"
                 >
                   <Info size={18} />
-                </button>
+                </FooterButton>
                 
                 {/* Dark Mode Toggle */}
-                <button
+                <FooterButton
                   onClick={toggleDarkMode}
-                  className="flex items-center justify-center w-11 h-11 bg-orange-600/60 rounded-xl backdrop-blur-md border-2 border-orange-500/80 shadow-xl hover:bg-orange-500/70 hover:border-orange-400 transition-all duration-200 transform hover:scale-105"
                   title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
                 >
                   {isDark ? <Sun size={18} /> : <Moon size={18} />}
-                </button>
+                </FooterButton>
               </div>
               
               {/* Bottom Row: Support message */}

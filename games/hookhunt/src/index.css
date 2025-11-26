@@ -13,10 +13,6 @@ body {
   min-height: 100vh;
 }
 
-#root {
-  min-height: 100vh;
-}
-
 /* Prevent page-level scrolling */
 html, body {
   height: 100%;
@@ -25,6 +21,7 @@ html, body {
 
 #root {
   height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -40,6 +37,7 @@ html, body {
 
 .animate-gentle-shift {
   animation: gentle-shift 15s ease infinite;
+  background-size: 400% 400%;
 }
 
 /* Custom scrollbar */
