@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-# Explanation: This file tells search engines which paths they can crawl
-# For PWA support, we allow all paths by default
